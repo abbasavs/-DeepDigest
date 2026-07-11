@@ -1,0 +1,905 @@
+/* ==========================================================================
+   CSS Variables, Reset & Fonts for Landing
+   ========================================================================== */
+@font-face {
+  font-family: "Modista";
+  src: url("../modista/Modista-9ME6y.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Color Palette - Elegant Awwwards Theme */
+  --bg-main: #050505;
+  --bg-sidebar: #560591;
+  --bg-surface: #ffffff;
+  --bg-card: #111111;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #4b5563;
+
+  --accent-color: #560591;
+  /* Enhanced neon violet */
+  --accent-glow: rgba(157, 0, 255, 0.5);
+  --accent-gradient: linear-gradient(135deg, #560591, #560591);
+
+  /* Typography */
+  --font-main: "Outfit", sans-serif;
+  --font-heading: "Modista", serif;
+
+  /* Border Radii (matching other pages) */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 32px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  cursor: none;
+  /* Touch device optimization */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(157, 0, 255, 0.4);
+  background-color: var(--accent-glow);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s,
+    height 0.2s,
+    background-color 0.2s;
+}
+
+body.hovering .custom-cursor-follower {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(157, 0, 255, 0.2);
+  border-color: var(--accent-color);
+}
+
+.hero-transition-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-main);
+}
+
+/* 1. HERO SECTION */
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transform-origin: top right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.hero-text {
+  font-family: var(--font-heading);
+  font-size: 16vw;
+  /* Increased from 14vw */
+  line-height: 0.85;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  /* Increased weight */
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  color: var(--bg-surface);
+}
+
+.hollow {
+  -webkit-text-stroke: 2px var(--bg-surface);
+  color: transparent;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, var(--accent-color), transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+  color: var(--text-secondary);
+}
+
+/* 2. DESCRIPTION SECTION */
+.description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15%;
+  background: transparent;
+}
+
+.section-heading {
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 40px;
+  align-self: flex-start;
+}
+
+.reveal-text {
+  font-family: var(--font-heading);
+  font-size: 4vw;
+  line-height: 1.3;
+  color: #222;
+  /* Faded initially */
+  font-weight: normal;
+  max-width: 1200px;
+}
+
+.highlight {
+  color: var(--accent-color);
+  display: inline-block;
+}
+
+/* 3. HORIZONTAL SCROLL SECTION */
+.horizontal-section {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-main);
+}
+
+.horizontal-wrapper {
+  display: flex;
+  width: 400%;
+  /* 4 panels = 400% */
+  height: 100vh;
+}
+
+.panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10vh 5vw;
+  /* Adds breathable spacing around the card */
+}
+
+/* The true glass/premium card */
+.panel-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.panel-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.panel-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.5); /* Nice subtle inner shadow */
+}
+
+.panel-inner > *:not(.panel-video-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: auto;
+}
+
+.panel-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.panel-icon {
+  font-size: 3rem;
+  color: var(--bg-surface);
+  opacity: 0.8;
+}
+
+.panel-title {
+  font-family: var(--font-heading);
+  font-size: 9vw;
+  /* Increased from 7vw */
+  z-index: 2;
+  font-weight: 800;
+  /* Increased weight */
+  color: var(--bg-surface);
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.panel-content {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* Premium Card Gradients */
+/* Overlay gradients using ::before to let the video shine through */
+.deep-purple {
+  background: transparent;
+}
+.deep-purple::before {
+  background: linear-gradient(135deg, rgba(157, 0, 255, 0.45), rgba(17, 17, 17, 0.8));
+}
+
+.dark-violet {
+  background: transparent;
+}
+.dark-violet::before {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.45), rgba(17, 17, 17, 0.8));
+}
+
+.midnight-blue {
+  background: transparent;
+}
+.midnight-blue::before {
+  background: linear-gradient(135deg, rgba(217, 70, 239, 0.35), rgba(17, 17, 17, 0.8));
+}
+
+.deep-black {
+  background: transparent;
+}
+.deep-black::before {
+  background: linear-gradient(135deg, rgba(31, 31, 31, 0.4), rgba(5, 5, 5, 0.85));
+}
+
+/* 4. FOOTER */
+.footer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-surface);
+  color: var(--bg-main);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+}
+
+.footer-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-title {
+  font-family: var(--font-heading);
+  font-size: 6vw;
+  line-height: 0.9;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* Updated Button to Match App Scheme */
+.big-btn {
+  margin-top: 60px;
+  padding: 20px 50px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: var(--bg-main);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-lg);
+  /* Match the login buttons */
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.big-btn:hover {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 15px 40px var(--accent-glow);
+  transform: translateY(-4px);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide custom cursor on mobile for better UX */
+  .custom-cursor,
+  .custom-cursor-follower {
+    display: none;
+  }
+
+  .floating-ghost {
+    display: none;
+  }
+
+  .hero {
+    height: 80vh;
+    min-height: 500px;
+  }
+
+  .hero-text {
+    font-size: 12vw;
+    line-height: 0.9;
+  }
+
+  .scroll-down {
+    font-size: 0.75rem;
+    bottom: 30px;
+  }
+
+  .description {
+    padding: 40px 20px;
+    margin: 0;
+  }
+
+  .section-heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .reveal-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .reveal-text .highlight {
+    font-size: 1.1rem;
+  }
+
+  .horizontal-section {
+    padding: 40px 0;
+  }
+
+  .horizontal-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 20px;
+    min-height: 300px;
+  }
+
+  .panel-inner {
+    padding: 30px 20px;
+  }
+
+  .panel-number {
+    font-size: 8rem;
+  }
+
+  .panel-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .panel-content {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .panel-icon {
+    font-size: 2.5rem;
+  }
+
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-cta {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+
+  .footer-text {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .cta-buttons {
+    width: 100%;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .cta-button {
+    flex: 1;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .timeline-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .timeline-date {
+    font-size: 0.9rem;
+  }
+
+  .timeline-title {
+    font-size: 1.3rem;
+  }
+
+  .hero-bg {
+    width: 60vw;
+    height: 60vw;
+    filter: blur(60px);
+  }
+}
+
+/* ========================================================================== 
+   Responsive Design - Small Mobile (480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .hero {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .hero-text {
+    font-size: 10vw;
+    line-height: 0.85;
+  }
+
+  .hero-text span {
+    display: inline;
+  }
+
+  .scroll-down {
+    font-size: 0.65rem;
+    bottom: 20px;
+  }
+
+  .description {
+    padding: 30px 16px;
+    margin: 0;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .reveal-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .reveal-text .highlight {
+    font-size: 1rem;
+  }
+
+  .horizontal-section {
+    padding: 30px 0;
+  }
+
+  .horizontal-wrapper {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 12px;
+    scroll-snap-type: y mandatory;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 16px;
+    min-height: 280px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .panel-inner {
+    padding: 24px 16px;
+  }
+
+  .panel-header {
+    margin-bottom: 12px;
+  }
+
+  .panel-number {
+    font-size: 6rem;
+    opacity: 0.3;
+  }
+
+  .panel-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .panel-content {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .panel-icon {
+    font-size: 2rem;
+  }
+
+  .footer {
+    padding: 30px 16px;
+  }
+
+  .footer-cta {
+    flex-direction: column;
+    gap: 16px;
+    padding: 30px 16px;
+  }
+
+  .footer-text {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .cta-buttons {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .timeline-item {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+  }
+
+  .timeline-title {
+    font-size: 1.1rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.85rem;
+  }
+
+  .hero-bg {
+    width: 80vw;
+    height: 80vw;
+    filter: blur(50px);
+  }
+}
+
+/* ========================================================================== 
+   Responsive Design - Very Small Mobile (360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+  .hero {
+    height: 55vh;
+    min-height: 350px;
+  }
+
+  .hero-text {
+    font-size: 9vw;
+    line-height: 0.8;
+  }
+
+  .scroll-down {
+    font-size: 0.6rem;
+    bottom: 15px;
+  }
+
+  .description {
+    padding: 24px 12px;
+  }
+
+  .section-heading {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .reveal-text {
+    font-size: 0.95rem;
+  }
+
+  .horizontal-wrapper {
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .panel {
+    padding: 12px;
+    min-height: 250px;
+  }
+
+  .panel-inner {
+    padding: 20px 12px;
+  }
+
+  .panel-number {
+    font-size: 5rem;
+  }
+
+  .panel-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .panel-content {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .panel-icon {
+    font-size: 1.8rem;
+  }
+
+  .footer-text {
+    font-size: 1.3rem;
+    line-height: 1.1;
+  }
+
+  .cta-button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .hero-bg {
+    width: 100vw;
+    height: 100vw;
+    filter: blur(40px);
+  }
+}
+
+/* ==========================================================================
+   GSAP Floating Characters (Foreground Placements)
+   ========================================================================== */
+.hero,
+.horizontal-section,
+.footer {
+  position: relative;
+  /* Ensure the absolute ghosts are contained within their specific sections */
+  overflow: hidden;
+  /* Prevent ghosts bleeding into other sections */
+}
+
+/* Base styling for all ghosts */
+.floating-ghost {
+  position: absolute;
+  height: auto;
+  opacity: 0.9;
+  /* More visible than background */
+  will-change: transform;
+  pointer-events: none;
+  /* Let clicks pass through */
+}
+
+/* 1. Hero Ghost (Light Ghost on Dark Bg) */
+.hero-ghost {
+  position: absolute; /* Added for independent placement */
+  width: 600px;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  z-index: 2; /* Sits behind description (5) and hero (10) text */
+  filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.4));
+  /* Strong blinding light glow */
+}
+
+/* 3. Footer Ghost (Dark Ghost on White Bg) */
+.footer-ghost {
+  width: 550px;
+  bottom: 0%;
+  left: -10%;
+  z-index: 1;
+  /* Behind the black CTA text */
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+  /* Deep shadow on white */
+}
+
+/* Gentle hovering idle animation */
+@keyframes ghostFloatX {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateX(20px) translateY(-15px) rotate(2deg);
+  }
+
+  50% {
+    transform: translateX(-10px) translateY(-30px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translateX(-20px) translateY(10px) rotate(-2deg);
+  }
+}
+
+.hero-ghost {
+  animation: ghostFloatX 18s ease-in-out infinite;
+}
+
+.footer-ghost {
+  animation: ghostFloatX 20s ease-in-out infinite;
+}
+
+/* Mobile scale down for ghosts */
+@media (max-width: 1024px) {
+  .hero-ghost {
+    width: 400px;
+    left: 0%;
+  }
+
+  .footer-ghost {
+    width: 400px;
+    bottom: 5%;
+    left: -15%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-ghost {
+    width: 250px;
+    left: -5%;
+  }
+
+  .footer-ghost {
+    width: 280px;
+    bottom: 10%;
+    left: -25%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-ghost {
+    width: 180px;
+    left: -10%;
+    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.2));
+  }
+
+  .footer-ghost {
+    width: 200px;
+    bottom: 8%;
+    left: -30%;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-ghost {
+    width: 150px;
+    left: -15%;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+  }
+
+  .footer-ghost {
+    width: 160px;
+    bottom: 5%;
+    left: -35%;
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.2));
+  }
+}

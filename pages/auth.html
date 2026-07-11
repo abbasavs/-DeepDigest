@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- RemixIcons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/auth.css" />
+  </head>
+
+  <body class="auth-body">
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- Futuristic Animated Background Text -->
+    <div class="bg-text-container" style="z-index: -1">
+      <div class="bg-text-track">
+        <span>ANTIGRAVITY</span>
+        <span>ANTIGRAVITY</span>
+        <span>ANTIGRAVITY</span>
+      </div>
+    </div>
+
+    <!-- The Auth Box -->
+    <div class="auth-box" id="auth-box">
+      <!-- Left form (Register) -->
+      <div class="form-panel register-panel">
+        <form id="register-form">
+          <h1 class="auth-title" data-i18n="join_us">Join Us</h1>
+          <p class="auth-desc" data-i18n="auth_desc_register">Create your DeepDigest account</p>
+
+          <div class="input-wrap">
+            <i class="ri-user-line"></i>
+            <input type="text" id="reg-name" placeholder="Full Name" data-i18n-placeholder="full_name" required />
+          </div>
+          <div class="input-wrap">
+            <i class="ri-mail-line"></i>
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="Email Address"
+              data-i18n-placeholder="email_address"
+              required
+            />
+          </div>
+          <div class="input-wrap">
+            <i class="ri-lock-2-line"></i>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Password"
+              data-i18n-placeholder="password"
+              required
+            />
+          </div>
+
+          <button class="submit-btn magnetic-element" type="submit" data-i18n="sign_up">
+            Sign Up
+          </button>
+          <button type="button" class="mobile-toggle" id="mobile-login-btn" data-i18n="already_have_account">
+            Already have an account? Login
+          </button>
+        </form>
+      </div>
+
+      <!-- Right form (Login) -->
+      <div class="form-panel login-panel">
+        <form id="login-form">
+          <h1 class="auth-title" data-i18n="welcome_back">Welcome Back</h1>
+          <p class="auth-desc" data-i18n="auth_desc_login">Log into your DeepDigest account</p>
+
+          <div class="input-wrap">
+            <i class="ri-mail-line"></i>
+            <input
+              type="email"
+              id="log-email"
+              placeholder="Email Address"
+              data-i18n-placeholder="email_address"
+              required
+            />
+          </div>
+          <div class="input-wrap">
+            <i class="ri-lock-2-line"></i>
+            <input
+              type="password"
+              id="log-password"
+              placeholder="Password"
+              data-i18n-placeholder="password"
+              required
+            />
+          </div>
+
+          <a href="#" class="forgot-pass magnetic-element" data-i18n="forgot_password">Forgot password?</a>
+
+          <button class="submit-btn magnetic-element" type="submit" data-i18n="sign_in">
+            Sign In
+          </button>
+          <button type="button" class="mobile-toggle" id="mobile-register-btn" data-i18n="dont_have_account">
+            Don't have an account? Register
+          </button>
+        </form>
+      </div>
+
+      <!-- The Floating Sliding Overlay -->
+      <div class="sliding-overlay" id="sliding-overlay">
+        <!-- Shows when overlay is on the Left (over Register, asking to Register) -->
+        <div
+          class="overlay-content overlay-register"
+          id="overlay-register-content"
+        >
+          <h2 data-i18n="new_here">New Here?</h2>
+          <p data-i18n="register_today">
+            Register today and discover the next generation of AI interaction.
+          </p>
+          <button class="switch-btn magnetic-element" id="switch-to-register" data-i18n="sign_up">
+            Sign Up
+          </button>
+        </div>
+
+        <!-- Shows when overlay is on the Right (over Login, asking to Login) -->
+        <div class="overlay-content overlay-login" id="overlay-login-content">
+          <h2 data-i18n="hello_friend">Hello, Friend!</h2>
+          <p data-i18n="already_member">Already have an account? Sign in to continue your journey.</p>
+          <button class="switch-btn magnetic-element" id="switch-to-login" data-i18n="sign_in">
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/auth.js"></script>
+  </body>
+</html>

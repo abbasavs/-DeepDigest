@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepDigest</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- RemixIcons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="../styles/landing.css" />
+</head>
+
+<body>
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-follower"></div>
+
+  <div class="smooth-wrapper">
+    <div class="hero-transition-container">
+      <!-- Light Ghost shifted to transition container so it survives the hero swipe -->
+      <img src="../images/lightGhost.svg" alt="Light Ghost" class="floating-ghost hero-ghost" />
+
+      <section class="hero">
+
+        <div class="hero-bg"></div>
+        <h1 class="hero-text">
+          <span>DEEP</span>
+          <span class="hollow">DIGEST</span>
+          <span></span>
+        </h1>
+        <div class="scroll-down">Pastga tushiring</div>
+      </section>
+
+      <section class="description">
+        <h2 class="section-heading">Bizning missiyamiz</h2>
+        <p class="reveal-text">
+          Biz shunchaki kod yozmaymiz. Biz mashinalarga
+          <span class="highlight">fikrlashni</span>,
+          <span class="highlight">his qilishni</span> va
+          <span class="highlight">yaratishni</span> o‘rgatamiz. Bu yangi davrning boshlanishi.
+        </p>
+      </section>
+    </div>
+
+    <section class="horizontal-section">
+  <div class="horizontal-wrapper">
+    <!-- Panel 1 -->
+    <div class="panel">
+      <div class="panel-inner deep-purple">
+        <video class="panel-video-bg" autoplay loop muted playsinline>
+          <source src="../videos/asistent.mp4" type="video/mp4">
+        </video>
+        <div class="panel-header">
+          <span class="panel-number">01</span>
+          <i class="ri-bar-chart-box-line panel-icon"></i>
+        </div>
+        <h2 class="panel-title">Assistent</h2>
+        <div class="panel-content">
+          DeepDigest sun’iy intellekti savollaringizga professional darajada javob beradi hamda aniq va foydali tavsiyalar taqdim etadi.
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="panel">
+      <div class="panel-inner dark-violet">
+        <video class="panel-video-bg" autoplay loop muted playsinline>
+          <source src="../videos/rasmyaratish.mp4" type="video/mp4">
+        </video>
+        <div class="panel-header">
+          <span class="panel-number">02</span>
+          <i class="ri-brain-line panel-icon"></i>
+        </div>
+        <h2 class="panel-title">Rasm yaratish</h2>
+        <div class="panel-content">
+          DeepDigest nafaqat savollaringizga javob beradi, balki sizning talabingiz asosida yuqori sifatli va kreativ tasvirlar ham yaratadi.
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="panel">
+      <div class="panel-inner midnight-blue">
+        <video class="panel-video-bg" autoplay loop muted playsinline>
+          <source src="../videos/codeyoaratish.mp4" type="video/mp4">
+        </video>
+        <div class="panel-header">
+          <span class="panel-number">03</span>
+          <i class="ri-node-tree panel-icon"></i>
+        </div>
+        <h2 class="panel-title">Kod yaratish</h2>
+        <div class="panel-content">
+          DeepDigest siz uchun turli dasturlash tillarida toza, optimallashtirilgan va amaliyotga tayyor kodlar yaratib beradi.
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 4 -->
+    <div class="panel">
+      <div class="panel-inner deep-black">
+        <video class="panel-video-bg" autoplay loop muted playsinline>
+          <source src="../videos/rasmtahlili.mp4" type="video/mp4">
+        </video>
+        <div class="panel-header">
+          <span class="panel-number">04</span>
+          <i class="ri-global-fill panel-icon"></i>
+        </div>
+        <h2 class="panel-title">Rasm tahlili</h2>
+        <div class="panel-content">
+          DeepDigest yuklangan tasvirlarni tezkor va aniq tahlil qilib, ularning mazmunini professional darajada tavsiflab beradi.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <footer class="footer">
+      <!-- Dark Ghost proudly floating in the White Footer -->
+      <img src="../images/darkGhost.svg" alt="Dark Ghost" class="floating-ghost footer-ghost" />
+
+      <div class="footer-content">
+        <h2 class="footer-title">WEB SAYTNI KO'RISHGA</h2>
+        <h2 class="footer-title">TAYYORMISIZ?</h2>
+        <a href="./auth.html" class="big-btn magnetic-element" style="
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              text-decoration: none;
+            ">
+           BOSHLASH
+          <i class="ri-arrow-right-line" style="margin-left: 8px"></i>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- GSAP & Lenis -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Local JS -->
+  <script src="../scripts/landing.js"></script>
+</body>
+
+</html>

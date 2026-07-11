@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepDigest</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- RemixIcons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+
+  <body>
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- Futuristic Animated Background Text -->
+    <!-- <div class="bg-text-container">
+        <div class="bg-text-track">
+            <span>ANTIGRAVITY</span>
+            <span>ANTIGRAVITY</span>
+            <span>ANTIGRAVITY</span>
+        </div>
+    </div> -->
+
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <span data-i18n="logo">DeepDigest</span>
+          </div>
+        </div>
+
+        <div class="sidebar-content">
+          <p class="section-title" data-i18n="recent_chats">Recent Chats</p>
+          <ul class="chat-history">
+            <button class="new-chat-btn magnetic-element" id="new-chat-btn">
+              <i class="ri-add-line"></i>
+              <span data-i18n="new_chat">New Chat</span>
+            </button>
+            <br />
+            <div id="history-list">
+              <!-- Dynamic History Items Will Go Here -->
+            </div>
+          </ul>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <img
+              src="https://ui-avatars.com/api/?name=User&background=10b981&color=fff"
+              alt="User Avatar"
+              class="avatar"
+            />
+            <div class="user-info">
+              <span class="user-name" data-i18n="user_name">User</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+          <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 16px">
+              <button
+                id="sidebar-toggle"
+                class="action-btn magnetic-element"
+                title="Toggle Sidebar"
+                data-i18n-title="sidebar_toggle"
+              >
+                <i class="ri-menu-2-line"></i>
+              </button>
+              <button class="model-selector magnetic-element">
+                <span class="reveal-text">DeepDigest</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </button>
+            </div>
+            <div class="header-actions">
+              <div
+                class="custom-dropdown-wrapper"
+                id="lang-wrapper"
+                style="position: relative"
+              >
+                <button
+                  class="action-btn magnetic-element custom-select-btn"
+                  id="lang-select-btn"
+                  title="Language"
+                  data-i18n-title="language"
+                  aria-label="Language selector"
+                >
+                  <span
+                    id="current-lang-text"
+                    style="font-size: 0.85rem; font-weight: 700"
+                    >EN</span
+                  >
+                </button>
+                <div class="custom-dropdown" id="lang-dropdown">
+                  <button class="dropdown-item lang-item" data-lang="en">
+                    English (EN)
+                  </button>
+                  <button class="dropdown-item lang-item" data-lang="ru">
+                    Русский (RU)
+                  </button>
+                  <button class="dropdown-item lang-item" data-lang="uz">
+                    O'zbek (UZ)
+                  </button>
+                </div>
+              </div>
+              <!-- <button class="action-btn magnetic-element" title="Share">
+                            <i class="ri-share-line"></i>
+                        </button> -->
+              <button
+                class="action-btn magnetic-element"
+                id="theme-toggle"
+                title="Toggle theme"
+                data-i18n-title="theme_toggle"
+                aria-label="Toggle theme"
+              >
+                <i class="ri-moon-line"></i>
+              </button>
+              <div class="settings-wrapper" style="position: relative">
+                <button
+                  class="action-btn magnetic-element"
+                  id="settings-btn"
+                  title="Settings"
+                  data-i18n-title="settings"
+                >
+                  <i class="ri-settings-4-line"></i>
+                </button>
+                <div class="settings-dropdown" id="settings-dropdown">
+                  <button class="dropdown-item" id="logout-btn">
+                    <i class="ri-logout-box-r-line"></i> <span data-i18n="logout">Logout</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Chat Area -->
+        <div class="chat-container">
+          <!-- Welcome Screen for New Chat -->
+          <div class="welcome-screen" id="welcome-screen">
+            <h1 class="welcome-title reveal-text">DeepDigest</h1>
+            <p
+              class="welcome-subtitle reveal-text"
+              data-i18n="welcome_subtitle"
+            >
+              How can I help you today?
+            </p>
+          </div>
+
+          <div class="chat-messages hidden" id="chat-messages">
+            <!-- Initial Welcome Message -->
+            <div class="message bot">
+              <div class="message-avatar">
+                <img src="./images/bot.svg" alt="" />
+              </div>
+              <div class="message-content">
+                <p class="bot-text reveal-text" data-i18n="welcome">
+                  Hello! I am DeepDigest AI, styled with a modern aesthetic, CSS
+                  Grid, and GSAP animations. How can I assist you today in
+                  creating beautiful interfaces?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-container-wrapper">
+          <div class="input-container">
+            <div class="input-actions">
+              <input
+                type="file"
+                id="file-input"
+                accept="image/*"
+                style="display: none"
+              />
+              <button
+                class="input-btn magnetic-element"
+                id="attach-btn"
+                title="Attach image"
+                data-i18n-title="attach_image"
+              >
+                <i class="ri-attachment-2"></i>
+              </button>
+              <button
+                class="input-btn magnetic-element"
+                id="voice-input-btn"
+                title="Voice input"
+                data-i18n-title="voice_input"
+              >
+                <i class="ri-mic-line"></i>
+              </button>
+              <button
+                class="input-btn magnetic-element"
+                id="generate-image-btn"
+                title="Generate image from prompt"
+                data-i18n-title="generate_image"
+              >
+                <i class="ri-image-add-line"></i>
+              </button>
+            </div>
+            <div
+              class="input-wrapper"
+              style="flex: 1; display: flex; flex-direction: column"
+            >
+              <div
+                id="image-preview-container"
+                class="hidden"
+                style="
+                  position: relative;
+                  width: fit-content;
+                  margin-bottom: 8px;
+                "
+              >
+                <img
+                  id="image-preview"
+                  src=""
+                  alt="Preview"
+                  style="
+                    max-height: 80px;
+                    border-radius: 8px;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    object-fit: cover;
+                  "
+                />
+                <button
+                  id="remove-image-btn"
+                  style="
+                    position: absolute;
+                    top: -8px;
+                    right: -8px;
+                    background: var(--bg-main);
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 14px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                  "
+                >
+                  <i class="ri-close-line"></i>
+                </button>
+              </div>
+              <textarea
+                id="chat-input"
+                data-i18n-placeholder="input_placeholder"
+                placeholder="Message DeepDigest AI..."
+                rows="1"
+                style="width: 100%"
+              ></textarea>
+            </div>
+            <button class="send-btn magnetic-element" id="send-btn">
+              <i class="ri-send-plane-fill"></i>
+            </button>
+          </div>
+          <!-- <div class="input-footer-text">
+                    DeepDigest may make mistakes. We recommend verifying important information!
+                </div> -->
+        </div>
+      </main>
+    </div>
+
+
+
+    <!-- Live Preview Modal -->
+    <div class="preview-modal" id="preview-modal">
+      <div class="preview-modal-content">
+        <div class="preview-modal-header">
+          <div class="preview-modal-title-wrap">
+            <i class="ri-window-2-line preview-modal-icon"></i>
+            <span class="preview-modal-title" data-i18n="live_preview">Live Preview</span>
+          </div>
+            <button
+            class="close-preview-btn magnetic-element"
+            id="close-preview-btn"
+            title="Close preview"
+            data-i18n-title="close_preview"
+          >
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div class="preview-iframe-wrapper">
+          <iframe
+            id="preview-iframe"
+            class="preview-iframe"
+            title="Code Preview"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Markdown and Highlight.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Local JS -->
+    <script src="./scripts/config.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/auth.js"></script>
+  </body>
+</html>
